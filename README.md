@@ -1,2 +1,3 @@
-# afl-math
-like gl-matrix but typescript and object based
+# @aeroflightlabs/linear-math
+
+This is a port of gl-matrix v3 into a modern typescript.
