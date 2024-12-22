@@ -19,9 +19,9 @@ export class Matrix3 {
     this.array[8] = 1;
   }
 
-  public clone(a: Matrix3): Matrix3 {
+  public clone(): Matrix3 {
     const o = new Matrix3();
-    o.array = [...a.array];
+    o.array = [...this.array];
 
     return o;
   }

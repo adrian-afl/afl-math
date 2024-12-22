@@ -12,9 +12,9 @@ export class Matrix2 {
     this.array[3] = 1;
   }
 
-  public clone(a: Matrix2): Matrix2 {
+  public clone(): Matrix2 {
     const o = new Matrix2();
-    o.array = [...a.array];
+    o.array = [...this.array];
 
     return o;
   }

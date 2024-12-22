@@ -27,9 +27,9 @@ export class Matrix4 {
     this.array[15] = 1;
   }
 
-  public clone(a: Matrix4): Matrix4 {
+  public clone(): Matrix4 {
     const o = new Matrix4();
-    o.array = [...a.array];
+    o.array = [...this.array];
 
     return o;
   }
@@ -639,6 +639,52 @@ export class Matrix4 {
     this.array[12] = v.x;
     this.array[13] = v.y;
     this.array[14] = v.z;
+    this.array[15] = 1;
+
+    return this;
+  }
+
+  public fromRotationTranslationScale(
+    q: Quaternion,
+    translation: Vector3,
+    scale: Vector3
+  ): this {
+    const x = q.x,
+      y = q.y,
+      z = q.z,
+      w = q.w;
+    const x2 = x + x;
+    const y2 = y + y;
+    const z2 = z + z;
+
+    const xx = x * x2;
+    const xy = x * y2;
+    const xz = x * z2;
+    const yy = y * y2;
+    const yz = y * z2;
+    const zz = z * z2;
+    const wx = w * x2;
+    const wy = w * y2;
+    const wz = w * z2;
+    const sx = scale.x;
+    const sy = scale.y;
+    const sz = scale.z;
+
+    this.array[0] = (1 - (yy + zz)) * sx;
+    this.array[1] = (xy + wz) * sx;
+    this.array[2] = (xz - wy) * sx;
+    this.array[3] = 0;
+    this.array[4] = (xy - wz) * sy;
+    this.array[5] = (1 - (xx + zz)) * sy;
+    this.array[6] = (yz + wx) * sy;
+    this.array[7] = 0;
+    this.array[8] = (xz + wy) * sz;
+    this.array[9] = (yz - wx) * sz;
+    this.array[10] = (1 - (xx + yy)) * sz;
+    this.array[11] = 0;
+    this.array[12] = translation.x;
+    this.array[13] = translation.y;
+    this.array[14] = translation.z;
     this.array[15] = 1;
 
     return this;
