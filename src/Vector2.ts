@@ -21,6 +21,10 @@ export class Vector2 {
     return new Vector2(arr[0], arr[1]);
   }
 
+  public toArray(): number[] {
+    return [this.x, this.y];
+  }
+
   public copy(a: Vector2): this {
     this.x = a.x;
     this.y = a.y;

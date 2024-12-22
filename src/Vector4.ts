@@ -17,6 +17,10 @@ export class Vector4 {
     return new Vector4(arr[0], arr[1], arr[2], arr[3]);
   }
 
+  public toArray(): number[] {
+    return [this.x, this.y, this.z, this.w];
+  }
+
   public copy(a: Vector4): this {
     this.x = a.x;
     this.y = a.y;
